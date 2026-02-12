@@ -11,9 +11,7 @@ import androidx.navigation.fragment.findNavController
 import coil3.load
 import coil3.request.crossfade
 import com.example.giphy_tz.databinding.FragmentGifDetailBinding
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class GifDetailFragment : Fragment() {
 
     private var _binding: FragmentGifDetailBinding? = null

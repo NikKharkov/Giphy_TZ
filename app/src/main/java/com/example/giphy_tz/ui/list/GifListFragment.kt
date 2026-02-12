@@ -9,8 +9,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.giphy_tz.R
 import com.example.giphy_tz.databinding.FragmentGifListBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -37,7 +39,11 @@ class GifListFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = GifItemAdapter { url ->
+            val bundle = Bundle().apply {
+                putString("url", url)
+            }
 
+            findNavController().navigate(R.id.action_list_to_detail, bundle)
         }
 
         binding.recyclerView.adapter = adapter

@@ -1,5 +1,6 @@
 package com.example.giphy_tz.di
 
+import com.example.giphy_tz.data.GiphyApiService
 import com.example.giphy_tz.util.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -14,6 +15,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
@@ -31,5 +33,11 @@ object NetworkModule {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideGiphyApi(retrofit: Retrofit): GiphyApiService {
+        return retrofit.create(GiphyApiService::class.java)
     }
 }

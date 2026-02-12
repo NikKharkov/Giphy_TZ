@@ -6,11 +6,19 @@
 
     <fragment
         android:id="@+id/gifListFragment"
-        android:name="com.example.giphy_tz.ui.GifListFragment"
-        android:label="Gifs" />
+        android:name="com.example.giphy_tz.ui.list.GifListFragment"
+        android:label="Gifs">
+        <action
+            android:id="@+id/action_list_to_detail"
+            app:destination="@id/gifDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/gifDetailsFragment"
-        android:name="com.example.giphy_tz.ui.GifDetailFragment"
-        android:label="Detail" />
+        android:name="com.example.giphy_tz.ui.detail.GifDetailFragment"
+        android:label="Detail">
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
 </navigation>
